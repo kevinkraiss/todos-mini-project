@@ -22,7 +22,21 @@ module.exports = () => {
     plugins: [
       new HTMLWebpackPlugin({
         template: './index.html'
-      })
+      }),
+      new WebpackPwaManifest({
+        name: 'myTODO app',
+        short_name: 'TODOs',
+        description: 'TODO app',
+        background_color: '#ffffff',
+        publicPath: '/',
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512]
+          }
+        ]
+      }),
+      GenerateSW()
     ],
 
     // TODO: Add the correct modules
